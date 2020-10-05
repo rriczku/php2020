@@ -1,0 +1,12 @@
+image: ddgg/php_2020:build_v1
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - composer
+          - node
+        script:
+          - php --version
+          - composer --version
+          - .ci/collect_reports.sh
