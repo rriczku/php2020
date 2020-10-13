@@ -2,8 +2,9 @@
 
 DIR=$(dirname "$0")
 NAME=$1
+APP=$2
 
 SCRIPT=$DIR/../run_$NAME.sh
 
-$SCRIPT
+$SCRIPT $APP
 

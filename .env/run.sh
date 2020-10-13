@@ -14,6 +14,7 @@ fi
 
 TAG=$1
 CONTAINER=$2
+APP=$3
 
 DIR=$(dirname "$0")
 
@@ -37,5 +38,5 @@ docker run --rm \
     -v $DIR/home/mozilla:/home/$(whoami)/.mozilla \
     --net=host \
     -w $DIR/../ \
-    -it ${CONTAINER}
+    -it ${CONTAINER} ${APP}
 
