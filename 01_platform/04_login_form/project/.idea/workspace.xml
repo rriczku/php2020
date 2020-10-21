@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a70c4a45-6412-4da4-acc3-710856b650be" name="Default Changelist" comment="" />
+    <list default="true" id="a70c4a45-6412-4da4-acc3-710856b650be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../index.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../index.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +58,7 @@
       <updated>1602070729266</updated>
       <workItem from="1602070737348" duration="726000" />
       <workItem from="1602156534021" duration="5000" />
+      <workItem from="1602678910821" duration="944000" />
     </task>
     <servers />
   </component>
@@ -71,12 +75,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="436" y="106" width="828" height="686" key="#CLI_Interpreters" timestamp="1602070814852">
       <screen x="0" y="0" width="1706" height="894" />
     </state>
     <state x="436" y="106" width="828" height="686" key="#CLI_Interpreters/0.0.1706.894@0.0.1706.894" timestamp="1602070814852" />
+    <state x="101" y="47" width="428" height="514" key="FileChooserDialogImpl" timestamp="1602679235005">
+      <screen x="0" y="0" width="636" height="604" />
+    </state>
+    <state x="101" y="47" width="428" height="514" key="FileChooserDialogImpl/0.0.636.604@0.0.636.604" timestamp="1602679235005" />
     <state x="650" y="373" width="399" height="150" key="NewPhpFileDialog" timestamp="1602070838161">
       <screen x="0" y="0" width="1706" height="894" />
     </state>
