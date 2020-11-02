@@ -16,7 +16,7 @@ $example_users = [
         'age' => 18
     ]
 ];
-$user = $example_users[$_GET['id']];
+$users = $example_users;
 ?>
 
 <html lang="en">
@@ -30,14 +30,15 @@ $user = $example_users[$_GET['id']];
     </style>
 </head>
 <body>
-<div>
-    <a href="index.php">Home</a>
-    <a href="about.php">About</a>
-    <a href="users.php">Users</a>
-</div>
-<p>User:</p>
-<p><strong>Name:</strong> <?= $user['name']?></p>
-<p><strong>Surname:</strong> <?= $user['surname']?></p>
-<p><strong>Age:</strong> <?= $user['age']?></p>
+
+<p>Users:</p>
+<ol>
+    <?php foreach ($users as $user_id => $user) { ?>
+<!--        <li><a href="user.php?id=--><?//= $user_id ?><!--">--><?//= $user['name'] ?><!--</a></li>-->
+        <li><a href="user/<?= $user_id ?>"><?= $user['name'] ?></a></li>
+    <?php } ?>
+</ol>
 </body>
 </html>
+
+
