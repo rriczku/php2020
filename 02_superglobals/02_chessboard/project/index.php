@@ -12,7 +12,7 @@ if(!isset($_SESSION['click']))
 if(isset($_POST['color']))
 {
     $kolorek=$_POST['color'];
-    setcookie('color',$kolorek,time()+3600);
+     setcookie('color',$kolorek,time()+3600);
 }
 function bresenham($x1,$y1,$x2,$y2)
 {
@@ -140,7 +140,7 @@ if(isset($_GET['x'])&&isset($_GET['z']))
     if($_SESSION['click']==2)
     {
         //bresenham
-        bresenham($_SESSION['p1x'],$_SESSION['p1y'],$_GET['x'],$_GET['z']);
+        bresenham($_SESSION['p1y'],$_SESSION['p1x'],$_GET['z'],$_GET['x']);
         //zerowanie clickow
         $_SESSION['click']=0;
         //zerowanie zmiennych
@@ -197,14 +197,14 @@ if(isset($_GET['x'])&&isset($_GET['z']))
 <body>
 
 <?php
-    for($i=0;$i<$_SESSION['cols'];$i++)
+    for($i=0;$i<$_SESSION['rows'];$i++)
     {
         echo "<div>";
-        for($j=0;$j<$_SESSION['rows'];$j++)
+        for($j=0;$j<$_SESSION['cols'];$j++)
         {
             if($_SESSION['tab'][$i][$j]==0)
-            echo "<a class=\"block $kolorek\" href=\"?x=$i&z=$j\"></a>";
-            else echo "<a class=\"block white\" href=\"?x=$i&z=$j\"></a>";
+            echo "<a class=\"block $kolorek\" href=\"?x=$j&z=$i\"></a>";
+            else echo "<a class=\"block white\" href=\"?x=$j&z=$i\"></a>";
         }
         echo "</div>";
     }
