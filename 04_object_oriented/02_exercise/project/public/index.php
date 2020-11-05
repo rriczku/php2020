@@ -10,7 +10,6 @@ ini_set("display_errors", "On");
 require ("../autoload.php");
 
 // Setup directory config
-
 Config\Directory::set("../");
 
 // App example
