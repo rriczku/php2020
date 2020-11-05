@@ -18,7 +18,7 @@ class FileStorage implements Storage
     {
         $myarray=array();
        $data=scandir(\Config\Directory::storage());
-       // print_r($data);
+
         foreach($data as $t => $t_value){
             if($t_value!="."&&$t_value!=".."&&$t_value!=".gitignore")
             {
@@ -29,8 +29,5 @@ class FileStorage implements Storage
             }
         }
         return $myarray;
-
-       //$dsr=unserialize($data);
-        //return $dsr;
     }
 }

@@ -15,15 +15,14 @@ class Directory
     }
     public static function storage()
     {
-        $storage ="../storage/";
-        return $storage;
+        return Directory::$root . "storage/";
     }
     public function view()
     {
-
+        return Directory::$root . "view/";
     }
     public function src()
     {
-        return "../src/";
+        return Directory::$root .  "src/";
     }
 }

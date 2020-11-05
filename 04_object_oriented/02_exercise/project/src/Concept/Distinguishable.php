@@ -10,10 +10,10 @@ abstract class Distinguishable
     }
     public function key()
     {
-       $first=self::normalize();
+       $first=$this->normalize();
         return $first."_".$this->id;
     }
-    public static function normalize()
+    private function normalize()
     {
         $str=static::class;
         $str=strtolower($str);
