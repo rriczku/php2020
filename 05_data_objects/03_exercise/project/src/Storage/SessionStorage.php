@@ -8,16 +8,22 @@ class SessionStorage implements Storage
 {
     public function __construct()
     {
-        // TODO: ...
+        session_start();
+        $_SESSION['widgets']=array();
     }
 
     public function store(Distinguishable $distinguishable) : void
     {
-        // TODO: ...
+        array_push($_SESSION['widgets'],serialize($distinguishable));
     }
 
     public function loadAll(): array
     {
-        // TODO: ...
+        $result=[];
+        foreach($_SESSION['widgets'] as $a)
+        {
+            array_push($result,unserialize($a));
+        }
+        return $result;
     }
 }
