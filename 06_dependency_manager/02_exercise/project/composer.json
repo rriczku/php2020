@@ -1,0 +1,20 @@
+{
+    "name": "rriczku/tutorial",
+    "description": "exercise 06",
+    "type": "project",
+    "require": {
+        "predis/predis": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Rychlicki",
+            "email": "jrychu@student.agh.edu.pl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {"": "../project/src/"}
+
+    }
+}
