@@ -6,11 +6,46 @@ use Model\User;
 
 class AuthController extends Controller
 {
-
+    public $errors=[];
+    public $correct=true;
     public $database;
     public function register()
 {
-    if(isset($_POST['id'])&&isset($_POST['name'])&&isset($_POST['surname'])&&isset($_POST['password'])&&isset($_POST['email'])) {
+
+    if(empty($_POST['id']))
+    {
+        $this->correct=false;
+        array_push($this->errors,"The id filed cannot be empty");
+    }
+    if(empty($_POST['name']))
+    {
+        $this->correct=false;
+        array_push($this->errors,"The name filed cannot be empty");
+    }
+    if(empty($_POST['surname']))
+    {
+        $this->correct=false;
+        array_push($this->errors,"The surname filed cannot be empty");
+    }
+    if(empty($_POST['email']))
+    {
+        $this->correct=false;
+        array_push($this->errors,"The email filed cannot be empty");
+    }if(empty($_POST['password']))
+    {
+        $this->correct=false;array_push($this->errors,"The password filed cannot be empty");
+    }if(empty($_POST['password_confirmation']))
+    {
+        $this->correct=false;
+        array_push($this->errors,"The password confirmation filed cannot be empty");
+    }
+    if($_POST['password']!=$_POST['password_confirmation'])
+    {
+        $this->correct=false;
+        array_push($this->errors,"The password confirmation filed does not match the password field");
+    }
+    if($this->correct)
+    {
         $this->database = $this->storage();
         $user = new User($_POST['id']);
         $user->name=$_POST['name'];
@@ -19,7 +54,15 @@ class AuthController extends Controller
         $user->password=password_hash($_POST['password'],PASSWORD_DEFAULT);
         $user->confirmed=false;
         $this->database->store($user);
+    } else
+    {
+        foreach($this->errors as $e)
+        {
+            echo "<li class='error'>$e</li>";
+        }
     }
+
+
     return ["auth.register.index", ["title" => "Register"]];
 }
 
