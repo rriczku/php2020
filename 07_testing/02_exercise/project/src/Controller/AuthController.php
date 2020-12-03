@@ -53,7 +53,9 @@ class AuthController extends Controller
         $user->email=$_POST['email'];
         $user->password=password_hash($_POST['password'],PASSWORD_DEFAULT);
         $user->confirmed=false;
+        $user->token=md5(uniqid(rand(),true));
         $this->database->store($user);
+        header('Location: confirmation_notice');
     } else
     {
         foreach($this->errors as $e)
@@ -70,5 +72,9 @@ class AuthController extends Controller
     public function login()
     {
         return ["auth.login.index", ["title" => "Login"]];
+    }
+    public function confirmation_notice()
+    {
+        return ["auth.confirmation_notice.index",["title"=>"Confirmation notice"]];
     }
 }

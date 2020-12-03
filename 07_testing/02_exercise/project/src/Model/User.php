@@ -11,6 +11,7 @@ class User extends Distinguishable
     public $email;
     public $password;
     public $confirmed;
+    public $token;
 
     public function __construct(int $id)
     {
