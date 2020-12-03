@@ -6,5 +6,12 @@ use Model\User;
 
 class AuthController extends Controller
 {
-    // TODO: ...
+    public function register()
+{
+    return ["register.index", ["title" => "Register"]];
+}
+    public function login()
+    {
+        return ["login.index", ["title" => "Login"]];
+    }
 }
