@@ -6,11 +6,12 @@ use Concept\Distinguishable;
 
 class User extends Distinguishable
 {
-    private $id;
-    private $name;
-    private $surname;
-    private $email;
-    private $password;
+    public $name;
+    public $surname;
+    public $email;
+    public $password;
+    public $confirmed;
+
     public function __construct(int $id)
     {
         parent::__construct($id);
