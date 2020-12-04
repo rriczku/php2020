@@ -69,6 +69,33 @@ class AuthController extends Controller
     return ["auth.register.index", ["title" => "Register"]];
 }
 
+    public function confirm()
+    {
+        $hash=$_SERVER['PHP_SELF'];
+        $link=explode('/',$hash);
+        $hashfromlink=end($link);
+
+        $this->database=$this->storage();
+        $users=$this->database->loadAll();
+        foreach($users as $user)
+        {
+           if($user->token==$hashfromlink)
+           {
+                $_SESSION['goodtoken']=true;
+                 $user->confirmed=true;
+                 $user->token=null;
+                 $this->database->store($user);
+                header("Location: /");
+
+                exit();
+
+           }
+        }
+        $_SESSION['goodtoken']=false;
+        header("Location: /");
+        exit();
+
+    }
 
     public function login()
     {

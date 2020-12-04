@@ -13,7 +13,7 @@ class User extends Distinguishable
     public $confirmed;
     public $token;
 
-    public function __construct(int $id)
+    public function __construct($id)
     {
         parent::__construct($id);
     }
