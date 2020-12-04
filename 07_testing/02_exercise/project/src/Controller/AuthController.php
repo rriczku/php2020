@@ -33,13 +33,14 @@ class AuthController extends Controller
         array_push($this->errors,"The email filed cannot be empty");
     }if(empty($_POST['password']))
     {
-        $this->correct=false;array_push($this->errors,"The password filed cannot be empty");
-    }if(empty($_POST['password_confirmation']))
+        $this->correct=false;
+        array_push($this->errors,"The password filed cannot be empty");
+    }if(empty($_POST['password_confirmation'])&&isset($_POST['password_confirmation']))
     {
         $this->correct=false;
         array_push($this->errors,"The password confirmation filed cannot be empty");
     }
-    if($_POST['password']!=$_POST['password_confirmation'])
+    if(isset($_POST['password'])&&isset($_POST['password_confirmation'])&&$_POST['password']!=$_POST['password_confirmation']&&!empty($_POST['password'])&&!empty($_POST['password_confirmation']))
     {
         $this->correct=false;
         array_push($this->errors,"The password confirmation filed does not match the password field");
@@ -56,7 +57,7 @@ class AuthController extends Controller
         $user->token=md5(uniqid(rand(),true));
         $this->database->store($user);
         header('Location: confirmation_notice');
-    } else
+    } else if(isset($_POST['id']))
     {
         foreach($this->errors as $e)
         {
