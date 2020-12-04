@@ -7,4 +7,4 @@
     Password:<input type="password" name="password"><br>
     Password Confirm:<input type="password" name="password_confirmation"><br>
     <input type="submit" value="Create">
-
+</form>

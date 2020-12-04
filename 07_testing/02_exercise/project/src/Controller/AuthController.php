@@ -99,10 +99,48 @@ class AuthController extends Controller
 
     public function login()
     {
+        if(isset($_POST['email'])) {
+            $emailPost = $_POST['email'];
+            $passwordPost=$_POST['password'];
+            $this->database = $this->storage();
+            $users = $this->database->loadAll();
+            $emailExists = false;
+            $isconfirmed=false;
+            $passwordCorrect=false;
+            foreach ($users as $user)
+            {
+                if ($user->email == $emailPost) {
+                    $emailExists = true;
+                }
+                if(password_verify($passwordPost,$user->password))
+                {
+                    $passwordCorrect=true;
+                }
+                if($user->confirmed==false&&$passwordCorrect&&$emailExists)
+                {
+                        header("Location: /auth/confirmation_notice");
+                        exit();
+                }
+            }
+
+
+            if($emailExists == false) {
+                $_SESSION['nomailfound'] = "Email '$emailPost' does not exist!";
+                header("Location: /");
+                exit();
+            }
+            if($passwordCorrect==false)
+            {
+                $_SESSION['incorectpassword']=true;
+            }
+
+            return ["auth.login.index", ["title" => "Login"]];
+        }
         return ["auth.login.index", ["title" => "Login"]];
     }
     public function confirmation_notice()
     {
         return ["auth.confirmation_notice.index",["title"=>"Confirmation notice"]];
     }
+
 }
