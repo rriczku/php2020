@@ -13,8 +13,17 @@
         unset($_SESSION['nomailfound']);
     }
     if(isset($_SESSION['incorectpassword'])) {
-    echo "<li class='error'>Password is invalid!</li>";
-    unset($_SESSION['incorectpassword']);
-}
-
+        echo "<li class='error'>Password is invalid!</li>";
+        unset($_SESSION['incorectpassword']);
+    }
+    if(isset($_SESSION['logged'])) {
+         $user=$_SESSION['logged'];
+        echo "<h4>Welcome back $user!</h4>";
+        //unset($_SESSION['logged']);
+    }
+    if(isset($_SESSION['logout']))
+    {
+        echo "<h3>Logged out successfully!</h3>";
+        unset($_SESSION['logout']);
+    }
 ?>

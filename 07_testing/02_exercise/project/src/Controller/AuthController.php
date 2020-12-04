@@ -107,10 +107,12 @@ class AuthController extends Controller
             $emailExists = false;
             $isconfirmed=false;
             $passwordCorrect=false;
+            $username=null;
             foreach ($users as $user)
             {
                 if ($user->email == $emailPost) {
                     $emailExists = true;
+                    $username=$user->name;
                 }
                 if(password_verify($passwordPost,$user->password))
                 {
@@ -133,10 +135,23 @@ class AuthController extends Controller
             {
                 $_SESSION['incorectpassword']=true;
             }
+            if($passwordCorrect)
+            {
+                $_SESSION['logged']="$username";
+                header("Location: /");
+                exit();
+            }
 
             return ["auth.login.index", ["title" => "Login"]];
         }
         return ["auth.login.index", ["title" => "Login"]];
+    }
+    public function logout()
+    {
+        unset($_SESSION['logged']);
+        $_SESSION['logout']=true;
+        header("Location: /");
+        exit();
     }
     public function confirmation_notice()
     {
