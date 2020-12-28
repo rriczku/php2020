@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Book;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,15 @@ Route::get('/', function () {
 });
 
 Route::resource('/comments', App\Http\Controllers\CommentController::class);
+//Route::resource('/books', App\Http\Controllers\BooksController::class);
+
+Route::resource('/books',App\Http\Controllers\BooksController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::post('/books/create',[\App\Http\Controllers\BooksController::class,'store'])->middleware('auth');
+Route::get('/books/create',[\App\Http\Controllers\BooksController::class,'create'])->middleware('auth');
 
 require __DIR__.'/auth.php';
