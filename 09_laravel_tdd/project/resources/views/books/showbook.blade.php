@@ -10,6 +10,7 @@
             <a>{{$book->title}}</a>
             @markdown($book->description)
             <a href="/books/{{$book->id}}/edit">Edit</a>
+            <a href="/books/{{$book->id}}/delete">Delete</a>
         </div>
     </div>
 </x-guest-layout>

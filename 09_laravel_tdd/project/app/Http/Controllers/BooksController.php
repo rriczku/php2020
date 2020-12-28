@@ -35,4 +35,27 @@ class BooksController extends Controller
     {
         return view('books.showbook')->withBook($book);
     }
+    public function edit(Book $book)
+    {
+        return view('books.edit')->withBook($book);
+    }
+    public function editpost(Request $request,$id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'isbn' => 'required|digits:13|integer',
+            'description' => 'required',
+        ]);
+        Book::where('id',$id)->update(['title'=>request('title')]);
+        Book::where('id',$id)->update(['description'=>request('description')]);
+        Book::where('id',$id)->update(['isbn'=>request('isbn')]);
+
+
+        return redirect('/books/'.$id);
+    }
+    public function delete($id)
+    {
+        Book::where('id',$id)->delete();
+        return redirect('/books');
+    }
 }

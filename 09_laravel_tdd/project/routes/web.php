@@ -29,5 +29,9 @@ Route::get('/dashboard', function () {
 
 Route::post('/books/create',[\App\Http\Controllers\BooksController::class,'store'])->middleware('auth');
 Route::get('/books/create',[\App\Http\Controllers\BooksController::class,'create'])->middleware('auth');
+Route::post('/books/{id}/edit',[\App\Http\Controllers\BooksController::class,'editpost'])->middleware('auth');
+Route::get('/books/{id}/edit',[\App\Http\Controllers\BooksController::class,'edit'])->middleware('auth');
+Route::get('/books/{id}/delete',[\App\Http\Controllers\BooksController::class,'delete'])->middleware('auth');
+
 
 require __DIR__.'/auth.php';
