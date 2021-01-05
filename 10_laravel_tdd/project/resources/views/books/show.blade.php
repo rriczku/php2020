@@ -60,10 +60,21 @@
                                         {{ __('Delete') }}
                                     </x-button>
                                 </form>
+
+                                <form method="get" action="{{ route('books.comments.index', $book) }}">
+                                    <x-button class="ml-4">
+                                        {{ __('Comments') }}
+                                    </x-button>
+                                </form>
+
                             </div>
                         </dl>
                     </div>
+
                 </div>
+
+
+
             </div>
         </div>
     </div>

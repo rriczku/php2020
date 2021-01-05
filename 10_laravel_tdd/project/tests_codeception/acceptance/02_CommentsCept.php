@@ -9,8 +9,11 @@ $randomNumber = rand();
 $title = "Title $randomNumber";
 $text = "Some text $randomNumber with **bold** text";
 $textOnPage = "Some text $randomNumber with bold text";
-
-$id = $I->haveInDatabase('comments', ['title' => $title, 'text' => $text]);
+$bookid=1;
+$description="sfafag";
+$isbn=1111111111111;
+$tt=$I->haveInDatabase('books',['title'=>$title,'description'=>$description,'isbn'=>$isbn]);
+$id = $I->haveInDatabase('comments', ['title' => $title, 'text' => $text,'book_id'=>$bookid]);
 
 $I->amOnPage('/comments');
 $I->seeLink($title, "/comments/$id");

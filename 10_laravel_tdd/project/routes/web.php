@@ -26,3 +26,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/books', App\Http\Controllers\BookController::class)->middleware('auth');
+Route::resource('books.comments', \App\Http\Controllers\BookCommentController::class);
